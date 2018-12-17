@@ -1,0 +1,134 @@
+#
+# ~/Dropbox/.aliasrc
+#
+
+export PATH="/home/$USER/bin:$PATH"
+alias death='for x in `jobs -p` ; do kill -9 $x ; done'
+#
+# Simple aliases
+#
+# alias tensorboard='python ~/.local/lib/python2.7/site-packages/tensorflow/tensorboard/tensorboard.py'
+
+#kubectl
+alias k='kubectl'
+alias kl='kubectl logs'
+alias kgp='kubectl get pods'
+alias kgpa='kubectl get pods -a'
+
+
+alias lg='lazygit'
+alias gd='zsh ~/Dropbox/scripts/nbgitdiff'
+alias p='cd ~/Projects'
+alias fw='cd $HOME/Projects/forecasting/pipeline/worker/worker-core'
+alias fn='cd $HOME/Projects/forecasting/neural-sales-forecasting/'
+alias c='cd'
+alias l='l -lah'
+alias break='$HOME/Dropbox/scripts/break.py'
+alias ndiff="git diff -- . \'\:\(exclude\)\*.ipynb\'"
+alias e="emacs -nw"
+alias gs="git status -uno"
+alias gc="git commit -m"
+alias gsu="git submodule update"
+alias hg='history | grep'
+alias pyc='rm *.pyc'
+alias nb='jupyter notebook'
+alias o='redshift -O'
+alias O='Dropbox/scripts/bl.sh'
+alias h='history | grep '
+alias neurobeast='ssh -X lm1015@129.31.137.93'
+alias ron='xrandr --output eDP1 --rotate normal'
+alias rol='xrandr --output eDP1 --rotate left'
+alias ror='xrandr --output eDP1 --rotate right'
+alias cv='cd ~/v'
+alias astyle='~/Downloads/astyle/build/gcc/bin/astyle'
+alias viki='ssh -X viki@192.168.1.70'
+# breaks on macs
+#alias ls='ls --color=auto'
+alias i='sudo apt-get install'
+alias s='apt-cache search'
+alias dp='echo $HOST > ~/Dropbox/DPHOST; dropbox start'
+alias dw='cat ~/Dropbox/DPHOST'
+alias ds='dropbox status'
+alias cdd='cd ~/Dropbox'
+alias ip2='ipython --matplotlib'
+alias wf='sudo wifi-menu'
+alias py='python'
+alias note='nano ~/Dropbox/TODO'
+alias sublime='/opt/sublime_text/sublime_text'
+alias sus='pm-suspend'
+alias hib='pm-suspend'
+alias sic="rlwrap sicstus --noinfo --nologo"
+alias sicall="sic -l *.pl"
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias bl='cd /sys/class/backlight/intel_backlight/'
+alias nautilus='nautilus --no-desktop'
+alias ipynb='ipython notebook'
+alias pd='rm -rf *.pyc'
+alias pi-ssh="ssh-pi 44:33:4c:6c:c2:41"
+alias ipy-ssh='ssh -X -L 8888:localhost:8888 graphic15'
+alias a='atom --force-device-scale-factor=1'
+alias icsh='ssh -X lm1015@shell4.doc.ic.ac.uk'
+alias icsh2='ssh -X -t lm1015@shell1.doc.ic.ac.uk ssh -X graphic15'
+alias graf='ssh -X graphic15'
+alias icmnt='sshfs lm1015@shell4.doc.ic.ac.uk:/homes/lm1015/ /home/luka/lm1015'
+alias icvmnt='sshfs -o reconnect lm1015@shell2.doc.ic.ac.uk:/vol /home/luka/v; cd ~/v/lm1015-tmp; cd -'
+alias beastmnt='sshfs lm1015@129.31.137.93:/ ~/beast'
+alias cling0='/vol/lab/CLASP/clingo'
+alias emacs='emacs -nw'
+alias msc='cd ~/Dropbox/msc_icl'
+alias listen2wifi='sudo tcpdump -i wlp2s0'
+alias beastmnt2='ssh -f lm1015@shell1.doc.ic.ac.uk -L 8889:129.31.137.93:22 -N; sshfs -p 8889 lm1015@localhost:/home/lm1015 ~/beast'
+alias tm='tmux attach -t 0'
+alias sxit='dropbox stop; exit'
+
+#
+# Favourite directory alias combo
+#
+# Store the location of your favourite directory
+FDPATH=~/Dropbox/.lastWorkDir
+alias fa='echo $(echo $(pwd) | sed "s:^$HOME:~:") > $FDPATH'
+# Go to your favourite directory
+alias f='cd $(cat $FDPATH | sed "s:^~:$HOME:")'
+
+#
+# Alias Graveyard
+#
+# alias mountFatExt='sudo mount -t vfat /dev/sdb1 /media/externalHD/ -o uid=1000,gid=1000,dmask=027,fmask=137'
+# alias bl='cd /sys/class/backlight/nvidia_backlight/; sudo bash; echo 70 > brightness'
+# alias ppp='cd /home/luka/Documents/Dropbox/cqp/report/thesis'
+# alias home2ic='rsync -r -v -e ssh ~/icshell/* lm1015@shell1.doc.ic.ac.uk:~/'
+# alias ic2home='rsync -r -v -e ssh lm1015@shell1.doc.ic.ac.uk:~/* ~/icshell/'
+
+
+# Common start up functions
+gnudate() {
+    if command -v acpi >/dev/null 2>&1; then
+        echo $(acpi | sed 's/Battery 0://g'), $(uptime -p)
+    else
+        echo $(uptime)
+    fi
+}
+
+gnudate
+
+function killjobs () {
+    JOBS="$(jobs -p)";
+    if [ -n "${JOBS}" ]; then;
+        kill -KILL ${JOBS};
+    fi
+}
+
+export_env_file () {
+    if [ -e $1 ]
+    then
+        export $(grep -v '^#' $1 | xargs)
+    else
+        echo Cannot find $1
+    fi
+}
+
+
+transfer() { if [ $# -eq 0 ]; then echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi 
+tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; } 
