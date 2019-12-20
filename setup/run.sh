@@ -6,6 +6,7 @@ sudo apt install numix-icon-theme-circle numix-icon-theme numix-gtk-theme
 sudo apt-get update; sudo apt-get upgrade; sudo apt-get autoremove;
 sudo apt-get install -f
 chsh -s /bin/zsh
+echo 'source ~/dotfiles/.aliasrc' >> ~/.zshrc
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
