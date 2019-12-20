@@ -17,7 +17,7 @@ alias kgpa='kubectl get pods -a'
 
 
 alias lg='lazygit'
-alias gd='zsh ~/Dropbox/scripts/nbgitdiff'
+alias gd='zsh ~/dotfiles/scripts/nbgitdiff'
 alias p='cd ~/Projects'
 alias fw='cd $HOME/Projects/forecasting/pipeline/worker/worker-core'
 alias fn='cd $HOME/Projects/forecasting/neural-sales-forecasting/'
@@ -87,7 +87,7 @@ alias sxit='dropbox stop; exit'
 # Favourite directory alias combo
 #
 # Store the location of your favourite directory
-FDPATH=~/Dropbox/.lastWorkDir
+FDPATH=~/.lastWorkDir
 alias fa='echo $(echo $(pwd) | sed "s:^$HOME:~:") > $FDPATH'
 # Go to your favourite directory
 alias f='cd $(cat $FDPATH | sed "s:^~:$HOME:")'
@@ -130,5 +130,48 @@ export_env_file () {
 }
 
 
-transfer() { if [ $# -eq 0 ]; then echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi 
-tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; } 
+transfer() { if [ $# -eq 0 ]; then echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
+tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; }
+
+# ----------------------
+# Git Aliases
+# ----------------------
+alias ga='git add'
+alias gaa='git add .'
+alias gaaa='git add --all'
+alias gau='git add --update'
+alias gb='git branch'
+alias gbd='git branch --delete '
+alias gc='git commit'
+alias gcm='git commit --message'
+alias gcf='git commit --fixup'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias gcom='git checkout master'
+alias gcos='git checkout staging'
+alias gcod='git checkout develop'
+#alias gd='git diff'
+alias gda='git diff HEAD'
+alias gi='git init'
+alias glg='git log --graph --oneline --decorate --all'
+alias gld='git log --pretty=format:"%h %ad %s" --date=short --all'
+alias gm='git merge --no-ff'
+alias gma='git merge --abort'
+alias gmc='git merge --continue'
+alias gp='git pull'
+alias gpr='git pull --rebase'
+alias gr='git rebase'
+alias gs='git status'
+alias gss='git status --short'
+alias gst='git stash'
+alias gsta='git stash apply'
+alias gstd='git stash drop'
+alias gstl='git stash list'
+alias gstp='git stash pop'
+alias gsts='git stash save'
+
+# ----------------------
+# Git Functions
+# ----------------------
+# Git log find by commit message
+function glf() { git log --all --grep="$1"; }
