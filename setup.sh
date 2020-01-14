@@ -1,6 +1,6 @@
 #!/bin/bash
 # For terminals
-sudo apt-get install zsh wget git curl -y
+sudo apt-get install sshfs zsh wget git curl htop -y
 sudo apt-get update -y; sudo apt-get upgrade -y
 
 #zsh
@@ -34,10 +34,6 @@ curl https://pyenv.run | bash
 #rescuetime
 wget https://www.rescuetime.com/installers/rescuetime_current_amd64.deb -O ~/Downloads/rescuetime.deb
 sudo dpkg -i ~/Downloads/rescuetime.deb
-
-#chrome
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O ~/Downloads/chrome.deb
-sudo dpkg -i ~/Downloads/chrome-deb
 
 sudo apt-get install -f; sudo apt-get autoremove
 
