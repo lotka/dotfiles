@@ -1,6 +1,6 @@
 #!/bin/bash
 # For terminals
-sudo apt-get install sshfs zsh wget git curl htop -y
+sudo apt-get install sshfs zsh wget git curl htop powertop -y
 sudo apt-get update -y; sudo apt-get upgrade -y
 
 #zsh

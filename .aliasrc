@@ -14,7 +14,7 @@ alias k='kubectl'
 alias kl='kubectl logs'
 alias kgp='kubectl get pods'
 alias kgpa='kubectl get pods -a'
-
+alias ros='source devel/setup.zsh'
 
 alias lg='lazygit'
 alias gd='zsh ~/dotfiles/scripts/nbgitdiff'
