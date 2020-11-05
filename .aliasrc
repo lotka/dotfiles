@@ -189,3 +189,17 @@ function glf() { git log --all --grep="$1"; }
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+if [[ -f devel/setup.zsh ]]; then
+    source /opt/ros/melodic/setup.zsh
+    source devel/setup.zsh
+    echo 'ROS Environment Loaded'
+fi
+
+
+alias rm='trash'
+
+alias source_ros1='source /opt/ros/melodic/setup.zsh'
+alias source_ros1_ws='source devel/setup.zsh'
+alias source_ros2='source /opt/ros/dashing/setup.zsh'
+alias source_ros2_ws='source install/setup.zsh '
