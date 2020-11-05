@@ -9,6 +9,9 @@ alias death='for x in `jobs -p` ; do kill -9 $x ; done'
 #
 # alias tensorboard='python ~/.local/lib/python2.7/site-packages/tensorflow/tensorboard/tensorboard.py'
 
+
+
+
 #kubectl
 alias k='kubectl'
 alias kl='kubectl logs'
@@ -21,7 +24,11 @@ alias gd='zsh ~/dotfiles/scripts/nbgitdiff'
 alias p='cd ~/Projects'
 alias fw='cd $HOME/Projects/forecasting/pipeline/worker/worker-core'
 alias fn='cd $HOME/Projects/forecasting/neural-sales-forecasting/'
-alias c='cd'
+
+c() {
+  tr -d '\n' | xclip -selection clipboard
+}
+
 alias l='l -lah'
 alias break='$HOME/Dropbox/scripts/break.py'
 alias ndiff="git diff -- . \'\:\(exclude\)\*.ipynb\'"
