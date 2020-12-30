@@ -22,8 +22,6 @@ alias ros='source devel/setup.zsh'
 alias lg='lazygit'
 alias gd='zsh ~/dotfiles/scripts/nbgitdiff'
 alias p='cd ~/Projects'
-alias fw='cd $HOME/Projects/forecasting/pipeline/worker/worker-core'
-alias fn='cd $HOME/Projects/forecasting/neural-sales-forecasting/'
 
 c() {
   tr -d '\n' | xclip -selection clipboard
