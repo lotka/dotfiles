@@ -1,7 +1,9 @@
 #!/bin/bash
 # For terminals
-sudo apt-get install sshfs zsh wget git curl htop powertop -y
+sudo apt-get install sshfs zsh wget git curl htop powertop emacs -y
 sudo apt-get update -y; sudo apt-get upgrade -y
+ln ~/dotfiles/.tmux.conf .tmux.config
+ln ~/dotfiles/.emacs.d/init.el .emacs.d/init.el 
 
 #zsh
 chsh -s /bin/zsh
