@@ -197,7 +197,7 @@ if [[ -f devel/setup.zsh ]]; then
 fi
 
 
-alias rm='trash'
+#alias rm='trash'
 
 alias source_ros1='source /opt/ros/melodic/setup.zsh'
 alias source_ros1_ws='source devel/setup.zsh'
